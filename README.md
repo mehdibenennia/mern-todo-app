@@ -1,6 +1,6 @@
 # Todo App - MERN
 
-# This is a simple Todo application built with React for the frontend and Node.js with Express for the backend. It allows users to create, read, update, and delete todo items.
+## This is a simple Todo application built with React for the frontend and Node.js with Express for the backend. It allows users to create, read, update, and delete todo items.
 
 ## Features
 
