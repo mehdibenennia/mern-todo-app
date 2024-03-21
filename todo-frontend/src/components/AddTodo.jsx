@@ -20,16 +20,22 @@ const AddTodo = ({ onAdd }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-      <input
+<form onSubmit={handleSubmit} className="mx-auto flex items-center space-x-2">
+    <input
         type="text"
         placeholder="Add new todo"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="w-full border-gray-300 rounded-lg p-2 my-2"
-      />
-      <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-lg" >Add Todo</button>
-    </form>
+        className="w-full border border-gray-300 rounded-lg p-2 my-2 focus:ring-indigo-500 focus:border-indigo-500"
+    />
+    <button 
+        type="submit" 
+        className="w-fit bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 font-bold rounded-lg transition duration-300 ease-in-out">
+        Add
+    </button>
+</form>
+
+
   );
 };
 

@@ -10,7 +10,7 @@ const TodoList = () => {
     fetchTodos();
     const fetchTodosInterval = setInterval(() => {
       fetchTodos();
-    }, 1000); // Fetch todos every 5 seconds (adjust as needed)
+    }, 1000); // Fetch todos every second (adjust as needed)
 
     return () => clearInterval(fetchTodosInterval); // Cleanup interval on component unmount
   }, []);
@@ -52,28 +52,41 @@ const TodoList = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto">
-      <h1 className="text-2xl font-bold my-4">Todo List</h1>
-      <ul>
-        {todos.map(todo => (
-          <li key={todo._id} className="flex items-center justify-between bg-gray-100 rounded-lg p-4 my-2">
-            <div className="flex items-center">
-              <input
-                type="checkbox"
-                checked={todo.completed}
-                onChange={(e) => handleCheckboxChange(todo._id, e.target.checked)}
-                className="mr-2"
-              />
-              <span className={todo.completed ? 'line-through' : ''}>{todo.title}</span>
-            </div>
-            <div>
-              <UpdateTodo todo={todo} onUpdate={handleUpdate} />
-              <button className="text-red-500" onClick={() => handleDelete(todo._id)}>Delete</button>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
+<div className="overflow-x-auto w-full">
+            <table className="table-auto w-full text-left whitespace-no-wrap">
+                <thead>
+                    <tr className="bg-gray-100">
+                        <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-50 rounded-tl rounded-bl">Completed</th>
+                        <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-50">Task</th>
+                        <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-50">Update</th>
+                        <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-50 rounded-tr rounded-br">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {todos.map(todo => (
+                        <tr key={todo._id} className="border-b odd:bg-white even:bg-gray-50">
+                            <td className="px-4 py-3">
+                                <input
+                                    type="checkbox"
+                                    checked={todo.completed}
+                                    onChange={(e) => handleCheckboxChange(todo._id, e.target.checked)}
+                                    className="form-checkbox h-5 w-5 text-gray-600"
+                                />
+                            </td>
+                            <td className={`px-4 py-3 ${todo.completed ? 'line-through' : ''}`}>
+                                {todo.title}
+                            </td>
+                            <td className="px-4 py-3">
+                                <UpdateTodo todo={todo} onUpdate={handleUpdate} />
+                            </td>
+                            <td className="px-4 py-3">
+                                <button className="text-red-500 hover:text-red-700" onClick={() => handleDelete(todo._id)}>Delete</button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
   );
 };
 

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import TodoList from './TodoList';
 import AddTodo from './AddTodo';
-import UpdateTodo from './components/UpdateTodo';
+
 
 
 const TodoApp = () => {
@@ -14,8 +14,9 @@ const TodoApp = () => {
 
   return (
     <div className="container mx-auto">
-      <AddTodo onAdd={handleAddTodo} />
-      <TodoList todos={todos} setTodos={setTodos} />
+        
+        {/* <AddTodo onAdd={handleAddTodo} />
+      <TodoList todos={todos} setTodos={setTodos} /> */}
     </div>
   );
 };
